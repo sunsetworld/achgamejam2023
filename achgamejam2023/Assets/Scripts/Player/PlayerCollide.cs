@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class PlayerCollide : MonoBehaviour
 {
-    [SerializeField] private GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,11 +20,11 @@ public class PlayerCollide : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Enemy"))
         {
-            gm.DestroyPlayer();
+           GameManager.Instance.DestroyPlayer();
         }
         else if (col.gameObject.CompareTag("Apple"))
         {
-            gm.SetObjectiveComplete(true);
+            GameManager.Instance.SetObjectiveComplete(true);
             Destroy(col.gameObject);
         }
     }

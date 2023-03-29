@@ -10,13 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _playerDirection;
 
     [SerializeField] float movementSpeed = 1;
-
-    private GameManager _GM;
     // Start is called before the first frame update
     void Start()
     {
-        _GM = FindObjectOfType<GameManager>();
-
     }
 
     // Update is called once per frame
@@ -29,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         _rigidbody2D.MovePosition(_rigidbody2D.position + 
-                                  _playerDirection * (movementSpeed * _GM.GetSpeedMultiplier()) * Time.fixedDeltaTime);
+                                  _playerDirection * 
+                                  (movementSpeed * GameManager.Instance.GetSpeedMultiplier()) * Time.fixedDeltaTime);
     }
 }

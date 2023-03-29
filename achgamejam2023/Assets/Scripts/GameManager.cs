@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [SerializeField] private int playerLives = 5;
     
     [SerializeField] private float speedMultiplier = 1;
@@ -17,11 +21,19 @@ public class GameManager : MonoBehaviour
     private bool _canModifyLives = true;
 
     [SerializeField] private bool objectiveComplete = false;
-    
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -65,11 +77,13 @@ public class GameManager : MonoBehaviour
     public void SetSpeedMultiplier(float multiplierToSet)
     {
         speedMultiplier = multiplierToSet;
+        GameManager.Instance.speedMultiplier = speedMultiplier;
     }
 
     public void AddSpeedMultiplier(float multiplierToAdd)
     {
         speedMultiplier += multiplierToAdd;
+        GameManager.Instance.speedMultiplier = speedMultiplier;
     }
 
     public float GetSpeedMultiplier()
@@ -120,3 +134,6 @@ public class GameManager : MonoBehaviour
         objectiveComplete = objToSet;
     }
 }
+
+// https://awesometuts.com/blog/singletons-unity/
+
