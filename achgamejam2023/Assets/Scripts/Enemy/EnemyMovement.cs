@@ -14,9 +14,12 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 _movement;
 
     private bool _isMoving = false;
+
+    private GameManager _gm;
     // Start is called before the first frame update
     void Start()
     {
+        _gm = FindObjectOfType<GameManager>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         StartCoroutine(MoveIntoNewDirection());
     }
@@ -40,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
             (GameManager.Instance.GetSpeedMultiplier() * movementSpeed * Time.deltaTime));
         */
         _rigidbody2D.velocity = _movement * (movementSpeed * Time.fixedDeltaTime);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds((5 / _gm.GetSpeedMultiplier()));
         _isMoving = false;
 
     }

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [SerializeField] public GMData gmData;
+
     [SerializeField] private int playerLives = 5;
     
     [SerializeField] private float speedMultiplier = 1;
@@ -22,12 +24,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool objectiveComplete = false;
 
+    [SerializeField] private string gameOverScene;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
+
+        speedMultiplier = gmData.speedMultiplier;
+        playerLives = gmData.playerLives;
     }
 
     // Start is called before the first frame update
@@ -78,12 +84,14 @@ public class GameManager : MonoBehaviour
     {
         speedMultiplier = multiplierToSet;
         GameManager.Instance.speedMultiplier = speedMultiplier;
+        gmData.speedMultiplier = multiplierToSet;
     }
 
     public void AddSpeedMultiplier(float multiplierToAdd)
     {
         speedMultiplier += multiplierToAdd;
         GameManager.Instance.speedMultiplier = speedMultiplier;
+        gmData.speedMultiplier = speedMultiplier;
     }
 
     public float GetSpeedMultiplier()
@@ -108,10 +116,12 @@ public class GameManager : MonoBehaviour
         if (_canModifyLives)
         {
             playerLives += livesToModify;
-            if ((playerLives + livesToModify) <= 0)
+            gmData.playerLives = playerLives;
+            if (playerLives <= 0)
             {
                 _gameOver = true;
                 Debug.Log("Game Over!");
+                SceneManager.LoadScene(gameOverScene);
             }
 
         }
@@ -122,6 +132,7 @@ public class GameManager : MonoBehaviour
     public void SetLives(int livesToSet)
     {
         playerLives = livesToSet;
+        gmData.playerLives = livesToSet;
     }
 
     public float GetTimer()
