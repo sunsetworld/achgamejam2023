@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool objectiveComplete = false;
 
+    [SerializeField] private string minigame1Scene;
+    [SerializeField] private string minigame2Scene;
     [SerializeField] private string gameOverScene;
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
         {
             if (objectiveComplete)
             {
-                Invoke("ResetGame", 1);
+                LoadNextScene();
             }
             else
             {
@@ -102,8 +104,7 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         _canModifyLives = true;
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        LoadNextScene();
     }
 
     public int GetLives()
@@ -143,6 +144,20 @@ public class GameManager : MonoBehaviour
     public void SetObjectiveComplete(bool objToSet)
     {
         objectiveComplete = objToSet;
+    }
+
+    void LoadNextScene()
+    {
+        String currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == minigame1Scene)
+        {
+            SceneManager.LoadScene(minigame2Scene);
+        }
+        else if (currentScene == minigame2Scene)
+        {
+            AddSpeedMultiplier(0.2f);
+            SceneManager.LoadScene(minigame1Scene);
+        }
     }
 }
 

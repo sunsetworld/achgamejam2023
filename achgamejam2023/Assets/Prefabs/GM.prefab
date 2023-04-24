@@ -44,4 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d70bab0700d704599236fffac8143b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 1
+  gmData: {fileID: 11400000, guid: 438cfc4422abc3a4d8fc294d7d5d9567, type: 2}
+  playerLives: 5
+  speedMultiplier: 2
+  playerTimer: 10
+  objectiveComplete: 0
+  minigame1Scene: minigame01
+  minigame2Scene: minigame02
+  gameOverScene: gameover

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 1
   defaultLives: 5
-  speedMultiplier: 1
-  playerLives: 0
+  speedMultiplier: 2
+  playerLives: 3
