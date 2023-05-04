@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class PlayerCollide : MonoBehaviour
 {
+    [SerializeField] private AudioClip speedUpClip;
+
+    private AudioSource _audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class PlayerCollide : MonoBehaviour
         else if (col.gameObject.CompareTag("Apple"))
         {
             GameManager.Instance.SetObjectiveComplete(true);
+            // _audioSource.PlayOneShot(speedUpClip, 1.5f);
             Destroy(col.gameObject);
         }
     }

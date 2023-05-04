@@ -1482,6 +1482,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Apple
       objectReference: {fileID: 0}
+    - target: {fileID: 559644190557848184, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644190557848184, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644190557848184, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644190557848184, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644190557848184, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
     - target: {fileID: 559644190557848185, guid: 351abb330143ffc469ece6b7cdcd3bcd, type: 3}
       propertyPath: m_RootOrder
       value: 4
