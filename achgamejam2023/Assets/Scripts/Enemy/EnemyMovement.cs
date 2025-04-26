@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody2D.MovePosition(_rigidbody2D.position + _movement * 
             (GameManager.Instance.GetSpeedMultiplier() * movementSpeed * Time.deltaTime));
         */
-        _rigidbody2D.velocity = _movement * (movementSpeed * Time.fixedDeltaTime);
+        _rigidbody2D.linearVelocity = _movement * (movementSpeed * Time.fixedDeltaTime);
         yield return new WaitForSeconds((5 / _gm.GetSpeedMultiplier()));
         _isMoving = false;
 
@@ -50,6 +50,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        _rigidbody2D.velocity = new Vector2(-_movement.x, -_movement.y) * (movementSpeed * Time.fixedDeltaTime);
+        _rigidbody2D.linearVelocity = new Vector2(-_movement.x, -_movement.y) * (movementSpeed * Time.fixedDeltaTime);
     }
 }
